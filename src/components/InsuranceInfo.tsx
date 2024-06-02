@@ -1,7 +1,6 @@
 // src/components/InsuranceInfo.tsx
 import React from 'react';
 import styled from 'styled-components';
-import ButtonGroup from './ButtonGroup';
 import Button from './Button';
 
 const Container = styled.div`
@@ -64,8 +63,8 @@ const ButtonContainer = styled.div`
 
 interface InsuranceInfoProps {
     companyName: string | undefined;
-    policyNumber: string;
-    startDate: string;
+    policyNumber: number;
+    startDate: string | undefined;
     buttonLabels: string[];
     showButtons: boolean | false;
     buttonHandlers: (() => void)[];
@@ -78,7 +77,7 @@ const InsuranceInfo: React.FC<InsuranceInfoProps> = ({ companyName, policyNumber
       <hr />
       <InsuranceInfoContainer>
         <InfoTextContainer>
-            <TextInfo>VICTORIA {companyName}</TextInfo>
+            <TextInfo>{companyName}</TextInfo>
             <Text>Apólice {policyNumber}</Text>
             <Text>Data início {startDate}</Text>
             <PlusIcon>+</PlusIcon>

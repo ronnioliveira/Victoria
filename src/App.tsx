@@ -1,5 +1,4 @@
-import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 import InsuranceInfo from './components/InsuranceInfo';
 import styled from 'styled-components';
@@ -31,12 +30,12 @@ function App() {
   };
 
   const clientDetails = clientDetailsMock;
-  const client = clientDetails.user.products.filter(x => x.aggregatorCode == '0001');
+  const client = clientDetails.user.products.filter(x => x.aggregatorCode === '0001');
 
 
-  const filterProduct = (products : any) => {
-    products.filter(x => x.aggregatorCode == '0001')
-  }
+  // const filterProduct = (products : any) => {
+  //   products.filter(x => x.aggregatorCode == '0001')
+  // }
 
   console.log('client', client)
 
@@ -45,8 +44,8 @@ function App() {
   return (
     <AppContainer>      
       <InsuranceInfo 
-        companyName={client.policies[0].objectReference}
-        policyNumber={() => filterProduct(clientDetails.user.products)}
+        companyName= {client[0].policies[0].objectReference}
+        policyNumber={client[0].policies[0].policyNumber}
         startDate='08/07/2020'
         buttonLabels={["DETALHE", "DOCUMENTOS", "RECIBOS"]}
         showButtons={true}
