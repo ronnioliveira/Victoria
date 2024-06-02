@@ -10,8 +10,9 @@
     "@types/node": "^16.18.97",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "react": "^18.3.1",
+    "axios": "^1.7.2",
     "react-dom": "^18.3.1",
+    "react-icons": "^5.2.1",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
@@ -19,6 +20,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "buildToLocalDx": "react-scripts build && node postbuild_local.js",
+    "buildToDx": "react-scripts build && node postbuild.js",
+    "dxdeploy": "dxclient deploy-scriptapplication push --dxProtocol http -hostname localhost -dxPort 10039 -dxUsername wpsadmin -dxPassword wpsadmin -contenthandlerPath /wps/mycontenthandler -mainHtmlFile index.html -wcmSiteArea \"Script Application Library/Script Applications/add-project\" -wcmContentName add-project -wcmContentTitle AddProject --contentRoot /store/build ",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
