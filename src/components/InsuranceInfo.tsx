@@ -1,7 +1,7 @@
-// src/components/InsuranceInfo.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from './Button';
+import { FaPlus, FaMinus } from "react-icons/fa";
 
 const Container = styled.div`
   border: 1px solid #ccc;
@@ -46,31 +46,28 @@ const Text = styled.span`
   color: #000;
 `;
 
-const PlusIcon = styled.div`
-  font-size: 1rem;
-  color: #007bff;
-  border: 0
-  background-color: #fff;
-  font-weight: bold;
-`
-
 const ButtonContainer = styled.div`
   display: flex;
   gap: 10px;
   padding-top: 15px
 `;
 
-
 interface InsuranceInfoProps {
     companyName: string | undefined;
     policyNumber: number;
     startDate: string | undefined;
     buttonLabels: string[];
-    showButtons: boolean | false;
     buttonHandlers: (() => void)[];
   }
 
-const InsuranceInfo: React.FC<InsuranceInfoProps> = ({ companyName, policyNumber, startDate, buttonLabels, showButtons, buttonHandlers }) => {
+const InsuranceInfo: React.FC<InsuranceInfoProps> = ({ companyName, policyNumber, startDate, buttonLabels, buttonHandlers }) => {
+
+  const [showButtons, setShowButtons] = useState(false)
+
+  const handleShowButtons = () => {
+    setShowButtons(!showButtons);
+  }
+
   return (
     <Container>
       <Header>Acidentes de Trabalho</Header>
@@ -80,7 +77,11 @@ const InsuranceInfo: React.FC<InsuranceInfoProps> = ({ companyName, policyNumber
             <TextInfo>{companyName}</TextInfo>
             <Text>Apólice {policyNumber}</Text>
             <Text>Data início {startDate}</Text>
-            <PlusIcon>+</PlusIcon>
+            {showButtons ? (
+              <FaPlus onClick={handleShowButtons} color='#007bff'/>  
+            ) : (
+              <FaMinus onClick={handleShowButtons} color='#007bff'/>          
+            )}
         </InfoTextContainer>
       </InsuranceInfoContainer>
       {showButtons && (

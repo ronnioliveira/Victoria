@@ -48,7 +48,6 @@ function App() {
         policyNumber={client[0].policies[0].policyNumber}
         startDate='08/07/2020'
         buttonLabels={["DETALHE", "DOCUMENTOS", "RECIBOS"]}
-        showButtons={true}
         buttonHandlers={[handleDetailClick, handleDocumentsClick, handleReceiptsClick]}
       />
     </AppContainer>
