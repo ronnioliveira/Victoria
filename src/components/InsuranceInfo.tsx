@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './Insurance.css';
 import Button from './Button';
 import { FaPlus, FaMinus } from "react-icons/fa";
@@ -16,6 +16,21 @@ interface InsuranceInfoProps {
 const InsuranceInfo: React.FC<InsuranceInfoProps> = ({ companyName, policyNumber, startDate, buttonLabels, buttonHandlers }) => {
 
     const [showButtons, setShowButtons] = useState(true)
+
+    useEffect(() => {
+        const fetchInsuranceInfo = async () => {
+            try {
+                const data = await getInsuranceInfo();
+
+                console.log('data', data)
+
+            } catch (error) {
+                console.error('Failed to fetch insurance info', error);
+            }
+        };
+
+        fetchInsuranceInfo();
+    }, []);
 
     const handleShowButtons = () => {
         console.log('!showButtons', !showButtons);
